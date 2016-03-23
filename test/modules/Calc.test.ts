@@ -1,12 +1,19 @@
-/// <reference path="../../typings/main.d.ts" />
+/* tslint:disable:no-unused-variable */
+import { expect, should } from '../helper'
 import Calc from '../../src/modules/Calc'
-import chai = require('chai')
-let expect = chai.expect
-chai.should()
 
 describe('Calc', () => {
-  it('should works', () => {
-    let calc = new Calc
+  let calc
+
+  beforeEach(() => {
+    calc = new Calc
+  })
+
+  it('should add', () => {
     calc.add(1, 2).should.equal(3)
+  })
+
+  it('should sub', () => {
+    expect(calc.sub(1, 2)).to.equal(-1)
   })
 })
