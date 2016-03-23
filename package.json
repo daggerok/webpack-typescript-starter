@@ -1,20 +1,178 @@
 {
-  "name": "webpack-typescript-starter",
-  "version": "1.0.0",
-  "description": "",
+  "description": "webpack typescript starter project with tslint, testing on mocha, chai and istanbul test coverage",
   "main": "webpack.config.js",
   "scripts": {
-    "postinstall": "typings i jquery -SA"
+    "postinstall": "npm-run-all typings:*",
+    "typings:mocha": "typings i mocha -DA",
+    "typings:chai": "typings i chai -DA",
+    "typings:jquery": "typings i jquery -SA",
+    "test": "npm i && mocha --compilers ts:ts-node/register --recursive",
+    "start": "npm run test -- -w",
+    "cover": "npm i && istanbul cover node_modules/mocha/bin/_mocha -- --compilers ts:ts-node/register --recursive",
+    "lint": "npm i && tslint 'src/**/*.ts'",
+    "build": "npm i && tsc --outDir dist src/main.ts test/main.test.ts",
+    "webpack": "npm i && webpack",
+    "prod": "npm run webpack -- -p"
   },
+  "tslintConfig": {
+    "rules": {
+      "align": [
+        true,
+        "parameters",
+        "arguments"
+      ],
+      "ban": false,
+      "class-name": true,
+      "comment-format": [
+        true,
+        "check-space",
+        "check-uppercase"
+      ],
+      "curly": true,
+      "eofline": true,
+      "forin": true,
+      "indent": [
+        true,
+        "spaces"
+      ],
+      "interface-name": false,
+      "jsdoc-format": true,
+      "label-position": true,
+      "label-undefined": true,
+      "max-line-length": [
+        true,
+        140
+      ],
+      "member-access": true,
+      "member-ordering": [
+        true,
+        "public-before-private",
+        "static-before-instance",
+        "variables-before-functions"
+      ],
+      "no-any": false,
+      "no-arg": true,
+      "no-bitwise": true,
+      "no-conditional-assignment": false,
+      "no-consecutive-blank-lines": true,
+      "no-construct": true,
+      "no-constructor-vars": true,
+      "no-debugger": true,
+      "no-duplicate-key": true,
+      "no-duplicate-variable": true,
+      "no-empty": true,
+      "no-eval": true,
+      "no-inferrable-types": false,
+      "no-internal-module": true,
+      "no-require-imports": false,
+      "no-shadowed-variable": false,
+      "no-string-literal": true,
+      "no-switch-case-fall-through": true,
+      "no-trailing-whitespace": true,
+      "no-unreachable": true,
+      "no-unused-expression": true,
+      "no-unused-variable": true,
+      "no-use-before-declare": true,
+      "no-var-keyword": true,
+      "no-var-requires": false,
+      "object-literal-sort-keys": false,
+      "one-line": [
+        true,
+        "check-open-brace",
+        "check-catch",
+        "check-else",
+        "check-whitespace"
+      ],
+      "quotemark": [
+        true,
+        "single",
+        "avoid-escape"
+      ],
+      "radix": true,
+      "semicolon": [
+        true,
+        "never"
+      ],
+      "switch-default": true,
+      "trailing-comma": false,
+      "triple-equals": [
+        true,
+        "allow-null-check"
+      ],
+      "typedef": [
+        false
+      ],
+      "typedef-whitespace": [
+        true,
+        {
+          "call-signature": "nospace",
+          "index-signature": "nospace",
+          "parameter": "nospace",
+          "property-declaration": "nospace",
+          "variable-declaration": "nospace"
+        }
+      ],
+      "use-strict": [
+        false
+      ],
+      "variable-name": [
+        true,
+        "check-format",
+        "allow-leading-underscore",
+        "ban-keywords"
+      ],
+      "whitespace": [
+        true,
+        "check-branch",
+        "check-decl",
+        "check-operator",
+        "check-type"
+      ]
+    }
+  },
+  "name": "webpack-typescript-starter",
+  "version": "1.0.0",
   "author": "Maksim Kostromin",
   "license": "ISC",
   "devDependencies": {
+    "chai": "^3.5.0",
+    "isparta": "^4.0.0",
+    "istanbul": "^0.4.2",
+    "mocha": "^2.4.5",
+    "npm-run-all": "^1.6.0",
     "ts-loader": "^0.8.1",
+    "ts-node": "^0.7.1",
+    "tslint": "^3.6.0",
     "typescript": "^1.8.9",
     "typings": "^0.7.9",
+    "typings-core": "^0.2.11",
     "webpack": "^1.12.14"
   },
   "dependencies": {
     "jquery": "^2.2.2"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "keywords": [
+    "webpack",
+    "ts-loader",
+    "typescript",
+    "typings",
+    "ts-node",
+    "tslint",
+    "mocha",
+    "chai",
+    "istanbul",
+    "isparta",
+    "npm-run-all"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daggerok/webpack-typescript-starter.git"
+  },
+  "bugs": {
+    "url": "https://github.com/daggerok/webpack-typescript-starter/issues"
+  },
+  "homepage": "https://github.com/daggerok/webpack-typescript-starter#readme"
 }
